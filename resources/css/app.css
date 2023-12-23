@@ -1,0 +1,20 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+    .text-link {
+        @apply font-semibold hover:underline inline-flex items-center gap-1
+    }
+
+    .figure-text {
+        font-style: italic;
+        font-size: .8rem;
+    }
+}
+
+.py-1,
+.py-2 {
+    padding-top: 0%;
+    padding-bottom: 0%;
+}
