@@ -22,4 +22,9 @@ class Question extends Model
     {
         return $this->hasMany(QuestionOption::class)->inRandomOrder();
     }
+
+    public function quizzes()
+    {
+        return $this->belongsToMany(Quiz::class);
+    }
 }

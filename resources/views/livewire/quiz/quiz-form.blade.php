@@ -48,6 +48,17 @@
                         </div>
 
                         <div class="mt-4">
+                            <x-input-label for="questions" value="Questions" />
+                            <select multiple wire:model='quizQuestions' class="select2 w-full">
+                                <option value="0">-- CHOOSE Question --</option>
+                                @foreach($questions as $id => $question)
+                                <option value="{{ $id }}">{{ $question }}</option>
+                                @endforeach
+                            </select>
+                            <x-input-error :messages="$errors->get('quizQuestions')" class="mt-2" />
+                        </div>
+
+                        <div class="mt-4">
                             <x-primary-button>
                                 Save
                             </x-primary-button>

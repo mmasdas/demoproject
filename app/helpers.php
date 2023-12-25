@@ -12,7 +12,7 @@ if (!function_exists('random_strings')) {
         $special = ['!', '@', '#', '$', '%', '^', '*'];
         $chars = array_merge($lowercase, $uppercase, $digits, $special);
 
-        $length = 12;
+        $length = 6;
 
         do {
             $password = array();

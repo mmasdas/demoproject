@@ -71,12 +71,11 @@
                                         </div>
                                     </td>
                                     <td class="px-6 py-4 text-sm leading-5 text-gray-900 whitespace-no-wrap">
-                                        <x-button href="{{ route('categories.edit', $category) }}"
-                                        class="m-1">
+                                        <x-button href="{{ route('categories.edit', $category) }}" class="m-1">
                                             Edit
                                         </x-button>
                                         <x-button wire:click="delete({{ $category->id }})"
-                                            wire:confirm="Are you sure you want to delete this post?" class="m-1">
+                                            wire:confirm="Are you sure you want to delete this Category?" class="m-1">
                                             Delete
                                         </x-button>
                                     </td>

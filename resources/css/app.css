@@ -18,3 +18,14 @@
     padding-top: 0%;
     padding-bottom: 0%;
 }
+
+
+
+.footer {
+    position: absolute;
+    bottom: 0;
+    width: -webkit-fill-available;
+    /* Set the fixed height of the footer here */
+    /* height: 60px; */
+    /* background-color: #000; */
+}

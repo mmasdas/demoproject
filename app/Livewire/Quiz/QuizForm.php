@@ -2,13 +2,28 @@
 
 namespace App\Livewire\Quiz;
 
+use App\Models\Question;
 use App\Models\Quiz;
+use Illuminate\Support\Collection;
 use Livewire\Component;
 use Spatie\FlareClient\Flare;
 use Illuminate\Support\Str;
+use Livewire\Attributes\Rule;
 
 class QuizForm extends Component
 {
+    // public array $listsForFields = [];
+
+    #[Rule('required|array', as: 'question')]
+    public array $quizQuestions = [];
+
+    public Collection $questions;
+
+    // public function initListsForFields()
+    // {
+    //     $this->listsForFields['questions'] = Question::pluck('question_text', 'id')->toArray();
+    // }
+
     public function render()
     {
         return view('livewire.quiz.quiz-form');
@@ -16,6 +31,10 @@ class QuizForm extends Component
 
     public function mount(Quiz $quiz): void
     {
+        // $this->initListsForFields();
+        // dd($this->listsForFields);
+        $this->questions = Question::pluck('question_text', 'id');
+
         if ($quiz->exists) {
             $this->quiz = $quiz;
             $this->editing = true;
@@ -24,6 +43,8 @@ class QuizForm extends Component
             $this->description = $quiz->description;
             $this->published = $quiz->published;
             $this->public = $quiz->public;
+
+            $this->quizQuestions = $quiz->questions()->pluck('id')->toArray();
         } else {
             $this->published = false;
             $this->public = false;
@@ -39,10 +60,6 @@ class QuizForm extends Component
     public bool $public = false;
 
     public bool $editing = false;
-
-    public array $questions = [];
-
-    public array $listsForFields = [];
 
     public function rules(): array
     {
@@ -84,6 +101,8 @@ class QuizForm extends Component
                 'title', 'slug', 'description', 'published', 'public'
             ]));
         }
+
+        $this->quiz->questions()->sync($this->quizQuestions);
 
         return to_route('quizzes');
     }

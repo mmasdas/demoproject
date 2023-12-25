@@ -22,4 +22,9 @@ class Quiz extends Model
         'published' => 'boolean',
         'public'    => 'boolean',
     ];
+
+    public function questions()
+    {
+        return $this->belongsToMany(Question::class);
+    }
 }

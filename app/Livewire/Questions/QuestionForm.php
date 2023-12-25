@@ -8,10 +8,6 @@ use SebastianBergmann\Type\NullType;
 
 class QuestionForm extends Component
 {
-    public function render()
-    {
-        return view('livewire.questions.question-form');
-    }
 
     public ?Question $question = null;
 
@@ -24,8 +20,7 @@ class QuestionForm extends Component
 
     public function mount(Question $question): void
     {
-        $this->question = $question;
-        if ($this->question->exists) {
+        if ($question->exists) {
 
             $this->editing = true;
 
@@ -116,4 +111,9 @@ class QuestionForm extends Component
     }
 
     public array $questionOptions = [];
+
+    public function render()
+    {
+        return view('livewire.questions.question-form');
+    }
 }
