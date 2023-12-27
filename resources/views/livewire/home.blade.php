@@ -17,6 +17,9 @@
                     on markets where technology, innovation, and capital can unlock long-term value and drive
                     economic growth.</p>
 
+                <hr>
+                <img src="./images/WechatIMG65.png" alt="">
+
             </div>
         </div>
     </div>

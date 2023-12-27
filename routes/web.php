@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Auth\SocialiteController;
 use App\Http\Controllers\ProfileController;
+use App\Livewire\AboutMe;
 use App\Livewire\CategoriesCreate;
 use App\Livewire\CategoriesEdit;
 use App\Livewire\CategoriesList;
@@ -39,9 +40,11 @@ Route::middleware('guest')->group(function () {
 });
 
 Route::get('/', Home::class)->name('home');
+Route::get('about', AboutMe::class)->name('about_me');
 
-
-Route::get('/dashboard', Home::class)->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/dashboard', Home::class)->middleware([
+    // 'auth', 'verified'
+])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
